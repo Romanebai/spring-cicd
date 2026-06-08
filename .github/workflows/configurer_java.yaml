@@ -24,4 +24,4 @@ jobs:
         run: mvn -version
 
       - name: Afficher les fichiers
-        run: ls -la
+        run: ls -al
