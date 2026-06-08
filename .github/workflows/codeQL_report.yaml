@@ -8,12 +8,6 @@ jobs:
     name: Analyse CodeQL
     runs-on: ubuntu-latest
 
-    permissions:
-      security-events: write
-      packages: read
-      actions: read
-      contents: read
-
     steps:
       - name: Initialiser CodeQL
         uses: github/codeql-action/init@v4
