@@ -18,6 +18,12 @@ jobs:
       - name: Récupérer le projet
         uses: actions/checkout@v4
 
+      - name: Installer Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
       - name: Initialiser CodeQL
         uses: github/codeql-action/init@v4
         with:
