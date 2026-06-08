@@ -2,13 +2,14 @@ name: Exemple Bonjour
 run-name: Exemple Bonjour
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   dire-bonjour:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Dire bonjour
+        run: echo "Bonjour depuis Github Actions"
       - name: Afficher les fichiers,
         run: ls
