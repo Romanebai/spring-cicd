@@ -1,0 +1,31 @@
+name: SpotBugs report
+
+on:
+  workflow_dispatch:
+
+jobs:
+  spotbugs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le projet
+        uses: actions/checkout@v4
+
+      - name: Installer Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
+      - name: Construire avec Maven
+        run: mvn -B clean verify -Dspring.profiles.active=test -Dmaven.test.failure.ignore=true
+
+      - name: Exécuter SpotBugs
+        run: mvn spotbugs:spotbugs
+
+      - name: Publier le rapport SpotBugs
+        uses: actions/upload-artifact@v4
+        with:
+          name: spotbugs-report
+          path: target/spotbugs.xml
